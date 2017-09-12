@@ -15,17 +15,6 @@
   var Todo = Parse.Object.extend("Todo");
   var allTodos = [];
 
-  function setViewTodos (callback, todos) {
-    var viewTodos = (todos || allTodos).map(function (todo) {
-      return {
-        id: todo.id,
-        title: todo.get('title'),
-        completed: todo.get('completed')
-      }
-    });
-    callback.call(this, viewTodos);
-  }
-
   /**
    * Creates a new client side storage object and will create an empty
    * collection if no collection already exists.
@@ -139,6 +128,17 @@
       Store.prototype.findAll(callback)
     })
   };
+
+  function setViewTodos (callback, todos) {
+    var viewTodos = (todos || allTodos).map(function (todo) {
+      return {
+        id: todo.id,
+        title: todo.get('title'),
+        completed: todo.get('completed')
+      }
+    });
+    callback.call(this, viewTodos);
+  }
 
   // Export to window
   window.app = window.app || {};
