@@ -52,7 +52,7 @@
 			callback = query;
 			return this.storage.findAll(callback);
 		} else if (queryType === 'string' || queryType === 'number') {
-			query = parseInt(query, 10);
+			// query = parseInt(query, 10);
 			this.storage.find({ id: query }, callback);
 		} else {
 			this.storage.find(query, callback);
